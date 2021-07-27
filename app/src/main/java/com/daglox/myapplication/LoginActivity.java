@@ -20,6 +20,4 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent=new Intent(this,passwordRecover1.class);
         startActivity(intent);
     }
-
-
 }
