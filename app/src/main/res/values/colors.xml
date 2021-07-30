@@ -19,4 +19,12 @@
     <color name="hard_green_rover">#4E7927</color>
     <color name="soft_gray_rover">#908E8E</color>
     <color name="soft_purple_rover">#9A86D0</color>
+
+    <color name="green_dark">#062925</color>
+    <color name="green_primary">#044a42</color>
+    <color name="green_light">#3a9188</color>
+
+    <color name="purple_primary">#FF6200EE</color>
+    <color name="purple_dark">#FF3700B3</color>
+    <color name="purple_light">#FFBB86FC</color>
 </resources>

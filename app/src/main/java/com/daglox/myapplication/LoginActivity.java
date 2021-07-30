@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("USUARIO",val_cod);
                         editor.commit(); //Graba las variables en Usuario.xml
 
-                        Intent intent = new Intent(LoginActivity.this, home.class);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                     }
                     else{
