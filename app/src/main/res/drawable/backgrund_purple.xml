@@ -6,12 +6,4 @@
         android:color="@color/lively_purple_rover">
     </solid>
 
-    <size
-        android:width="412dp">
-    </size>
-
-    <corners
-        android:bottomLeftRadius="100dp" android:bottomRightRadius="100dp">
-    </corners>
-
 </shape>

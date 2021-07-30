@@ -27,7 +27,7 @@
         android:elevation="0dp"
         android:scaleType="fitStart"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/first_layout"
+        app:srcCompat="@drawable/backgrund_purple"
         tools:layout_editor_absoluteX="0dp" />
 
     <ImageView
@@ -42,8 +42,8 @@
         android:src="@drawable/logo_sin_fondo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imgUpBackground1"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>
