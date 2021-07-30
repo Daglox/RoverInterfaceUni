@@ -8,27 +8,27 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/Email_Input"
+        android:id="@+id/edtUser"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/ic_email"
+        android:drawableStart="@drawable/ic_person"
         android:drawablePadding="12dp"
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="User"
         android:inputType="textEmailAddress"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLogin" />
 
     <EditText
-        android:id="@+id/Password_Input"
+        android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:layout_marginStart="32dp"
@@ -43,12 +43,12 @@
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email_Input" />
+        app:layout_constraintTop_toBottomOf="@+id/edtUser" />
 
     <Button
-        android:id="@+id/Login_button"
+        android:id="@+id/btnSignIn"
         android:layout_width="match_parent"
         android:layout_height="49dp"
         android:layout_marginStart="32dp"
@@ -60,13 +60,13 @@
         app:cornerRadius="25dp"
         android:onClick="sign_in"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Password_Input"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword"
         app:rippleColor="#606060" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnForgotPassword"
         style="?attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
@@ -76,12 +76,12 @@
         android:text="I forgot my password"
         android:textColor="@color/soft_gray_rover"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Password_Input" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="54dp"
@@ -91,19 +91,20 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imgUpBackground1" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgUpBackground1"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:scaleType="fitStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/first_layout"
-        tools:layout_editor_absoluteX="0dp" />
+        app:srcCompat="@drawable/first_layout" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgLogo1"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginTop="35dp"

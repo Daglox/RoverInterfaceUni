@@ -33,7 +33,7 @@ public class passwordRecover1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_recover1);
-        edtMail = findViewById(R.id.editTextTextEmailAddress2);
+        edtMail = findViewById(R.id.edtBackEmail);
         //getSupportActionBar().setTitle("Cambio de clave");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }

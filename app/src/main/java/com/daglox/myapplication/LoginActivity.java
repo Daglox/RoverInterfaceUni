@@ -9,8 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -39,9 +37,9 @@ public class LoginActivity extends AppCompatActivity {
         /*Eliminando el Action bar del activity main */
         //getSupportActionBar().hide();
         /*Conectando los objetos JAVA con los XML*/
-        edtUser = findViewById(R.id.Email_Input);
-        edtPassword = findViewById(R.id.Password_Input);
-        btnEnter = findViewById(R.id.button);
+        edtUser = findViewById(R.id.edtUser);
+        edtPassword = findViewById(R.id.edtPassword);
+        btnEnter = findViewById(R.id.btnForgotPassword);
         //txv_registrar = findViewById(R.id.txv_registrar_activity_main);
         //pgbLoad = findViewById(R.id.pgb_cargando_activiy_main);
         /*La unica orientacion valida es portrait (vista vertical, parado)*/

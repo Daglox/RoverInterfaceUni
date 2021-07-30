@@ -32,8 +32,8 @@ public class passwordRecover3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_recover3);
 
-        edtNewPassword = findViewById(R.id.password_Input);
-        edtNewPasswordRepeated=findViewById(R.id.password_Input2);
+        edtNewPassword = findViewById(R.id.edtNewPassword);
+        edtNewPasswordRepeated=findViewById(R.id.edtNewPasswordConfirm);
         //getSupportActionBar().setTitle("Cambio de clave");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 

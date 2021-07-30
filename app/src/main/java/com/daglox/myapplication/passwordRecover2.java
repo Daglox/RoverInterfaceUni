@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,12 +22,76 @@ public class passwordRecover2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_recover2);
-        edt1 = findViewById(R.id.password_input_1);
-        edt2 = findViewById(R.id.password_input_2);
-        edt3 = findViewById(R.id.password_input_3);
-        edt4 = findViewById(R.id.password_input_4);
+        edt1 = findViewById(R.id.edtCode1);
+        edt2 = findViewById(R.id.edtCode2);
+        edt3 = findViewById(R.id.edtCode3);
+        edt4 = findViewById(R.id.edtCode4);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
+
+        edt1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (edt1.getText().toString().length()==1){
+                    edt2.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        edt2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (edt2.getText().toString().length()==1){
+                    edt3.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        edt3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (edt3.getText().toString().length()==1){
+                    edt4.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
 
         Intent recievedIntent=getIntent();
         Bundle extras=recievedIntent.getExtras();
