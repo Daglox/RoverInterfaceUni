@@ -15,6 +15,18 @@
 
     </style>
 
+    <style name="BottomNavigation_Green">
+        <item name="android:background">@color/green_dark</item>
+        <item name="itemIconTint">@color/green_light</item>
+        <item name="itemTextColor">@color/green_light</item>
+    </style>
+
+    <style name="BottomNavigation_Purple">
+        <item name="android:background">@color/purple_dark</item>
+        <item name="itemIconTint">@color/purple_light</item>
+        <item name="itemTextColor">@color/purple_light</item>
+    </style>
+
     <style name="myRoverButton">
         <item name="backgroundTint">@color/rover_green_primary</item>
         <item name="colorPrimaryVariant">@color/rover_green_light</item>

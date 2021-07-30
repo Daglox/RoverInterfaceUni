@@ -9,8 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -88,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("USUARIO",val_cod);
                         editor.commit(); //Graba las variables en Usuario.xml
 
-                        Intent intent = new Intent(LoginActivity.this, home.class);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                     }
                     else{
