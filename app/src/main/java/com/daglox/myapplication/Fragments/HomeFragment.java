@@ -23,12 +23,13 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         edtNumber = v.findViewById(R.id.edtNumber);
         btnRefresh = v.findViewById(R.id.btnRefresh);
+        edtNumber.setText("Hola");
+        Toast.makeText(getContext(),"Refresh de la actividad", Toast.LENGTH_SHORT).show();
         btnRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getFragmentManager().beginTransaction().detach(HomeFragment.this)
                         .attach(HomeFragment.this).commit();
-                Toast.makeText(getContext(),"Refresh de la actividad", Toast.LENGTH_SHORT).show();
             }
         });
         return v;
