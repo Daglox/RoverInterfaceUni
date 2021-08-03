@@ -125,6 +125,7 @@ public class passwordRecover2 extends AppCompatActivity {
                     Intent intent=new Intent(this,passwordRecover3.class);
                     intent.putExtra("EMAIL",mail);
                     startActivity(intent);
+                    finish();
                 } else
                     Toast.makeText(this, "El código ya no es válido, solicite uno nuevo", Toast.LENGTH_SHORT).show();
 

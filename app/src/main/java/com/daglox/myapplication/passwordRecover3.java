@@ -21,6 +21,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class passwordRecover3 extends AppCompatActivity {
 
@@ -50,8 +52,8 @@ public class passwordRecover3 extends AppCompatActivity {
     }
 
     public void Password_Save(View view) {
-        NewPassword = edtNewPassword.getText().toString();
-        NewPasswordRepeated = edtNewPasswordRepeated.getText().toString();
+        NewPassword = edtNewPassword.getText().toString().trim();
+        NewPasswordRepeated = edtNewPasswordRepeated.getText().toString().trim();
         Boolean Change = false;
         if (!NewPassword.isEmpty() && NewPassword.length() >= 6
                 && !NewPasswordRepeated.isEmpty() && NewPasswordRepeated.length() >= 6)
@@ -60,20 +62,23 @@ public class passwordRecover3 extends AppCompatActivity {
             if (NewPassword.equals(NewPasswordRepeated)) {
                 try {
                     RequestQueue requestQueue = Volley.newRequestQueue(this);
-                    final String RequestBody ="key=12345" + "&mail="+ mail +"&password="+NewPassword;
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, URL.URL_CHANGE,
+                    final String RequestBody = "{"+
+                            "\"email\"" +":"+ "\""+mail+"\",\"password\":"+"\""+NewPassword+"\"}";
+                    Log.e("Mes",RequestBody);
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, URL.URL_UPDATE,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
                                     try {
                                         JSONObject json_obj = new JSONObject(response);
-                                        String registro = json_obj.getString("QUERYCHANGE");
-                                        if (registro.equals("OK")) {
+                                        Log.e("Response",response);
+                                        String registro = json_obj.getString("message");
+                                        if (registro.equals("PasswordUpdated")) {
                                             Toast.makeText(passwordRecover3.this, "Se ha cambiado su clave exitosamente", Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(passwordRecover3.this, LoginActivity.class);
                                             startActivity(intent);
                                             finish();
-                                        } else if (registro.equals("ER")) {
+                                        } else if (registro.equals("ErrorJson")) {
                                             Toast.makeText(passwordRecover3.this, "No se pudo actualizar su clave", Toast.LENGTH_SHORT).show();
                                         }
 
@@ -92,6 +97,13 @@ public class passwordRecover3 extends AppCompatActivity {
                         @Override
                         public String getPostBodyContentType() {
                             return "application/json; charset=utf-8";
+                        }
+
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            Map<String, String> headers = new HashMap<String, String>();
+                            headers.put("Apim-Rover-Key", URL.URL_KEY);
+                            return headers;
                         }
 
                         @Override
