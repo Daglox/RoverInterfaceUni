@@ -44,6 +44,19 @@ public class LoginActivity extends AppCompatActivity {
         //pgbLoad = findViewById(R.id.pgb_cargando_activiy_main);
         /*La unica orientacion valida es portrait (vista vertical, parado)*/
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        /*
+        //Preguntarme si ya me he logueado anteriormente
+        SharedPreferences pref=getSharedPreferences("Usuario.xml",MODE_PRIVATE);
+        String user = pref.getString("USUARIO",null);
+
+        if (user!=null){
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+         */
     }
 
 
