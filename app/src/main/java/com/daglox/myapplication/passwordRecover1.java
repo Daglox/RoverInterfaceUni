@@ -14,7 +14,6 @@ import android.text.Html;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -145,13 +144,13 @@ public class passwordRecover1 extends AppCompatActivity {
             Session session = Session.getInstance(properties,
                     new javax.mail.Authenticator() {
                         protected PasswordAuthentication getPasswordAuthentication() {
-                            return new PasswordAuthentication(Credentials.Credentials_mail, Credentials.Credentials_password);
+                            return new PasswordAuthentication(Credentials.CREDENTIAL_MAIL, Credentials.CREDENTIAL_PASSWORD);
                         }
                     });
 
             if (session != null) {
                 Message message = new MimeMessage(session);
-                message.setFrom(new InternetAddress(Credentials.Credentials_mail));
+                message.setFrom(new InternetAddress(Credentials.CREDENTIAL_MAIL));
                 message.setRecipients(Message.RecipientType.TO,
                         InternetAddress.parse(mail));
                 GenerateCode();
