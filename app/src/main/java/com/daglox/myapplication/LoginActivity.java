@@ -20,7 +20,11 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONObject;
+
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -76,62 +80,67 @@ public class LoginActivity extends AppCompatActivity {
                 usuario=usuario;
 
             }
-            final String requestBody = "usuario="+usuario+"&clave="+pass;
+            final String requestBody= "{"+
+                    "\"username\"" +":"+ "\""+usuario+"\",\"password\":"+"\""+pass+"\"}";
+            Log.e("Mes",requestBody);
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL.URL_LOGIN,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject json_obj = new JSONObject(response);
+                                Log.e("Response",response);
+                                String registro = json_obj.getString("result");
+                                Log.e("AVER",registro);
+                                if (registro.contains("ValidUser")) {
+                                    Toast.makeText(LoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else if (registro.contains("InvalidPassword")) {
+                                    Toast.makeText(LoginActivity.this, "Invalid Password", Toast.LENGTH_SHORT).show();
+                                }
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL.URL_LOGIN, new Response.Listener<String>() {
+                                else if (registro.contains("IvalidUser")) {
+                                    Toast.makeText(LoginActivity.this, "Invalid User", Toast.LENGTH_SHORT).show();
+                                }
+
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("Conexion Error", error.getMessage());
+                            Log.e("Result", "there was an error " + error);
+                        }
+                    }) {
                 @Override
-
-                public void onResponse(String response) {
-                    Log.e("Respuesta de Webhost", response);
-                    //pgbLoad.setVisibility(View.GONE);
-                    Log.e("AAAAAA",URL.URL_LOGIN);
-                    if (response.contains("\"USUARIO\"")){
-
-                        //SharedPreferences variables almacenadas en el disco duro
-                        Toast.makeText(LoginActivity.this,"Bienvenido", Toast.LENGTH_SHORT).show();
-
-                        SharedPreferences pref=getSharedPreferences("Usuario.xml",MODE_PRIVATE);
-                        SharedPreferences.Editor editor=pref.edit();
-
-                        String val_cod=edtUser.getText().toString();
-
-
-                        editor.putString("USUARIO",val_cod);
-                        editor.commit(); //Graba las variables en Usuario.xml
-
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                    }
-                    else{
-                        Toast.makeText(LoginActivity.this, "La clave o el usuario son errados",Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.d("hola","izi");
-                    Log.e("Error",error.getMessage());
-                    Log.e("Resultado","fallo conexión "+error);
-                }
-            }){
-                @Override
-                public String getBodyContentType(){
+                public String getPostBodyContentType() {
                     return "application/json; charset=utf-8";
                 }
-                @Override
-                public byte[] getBody() throws AuthFailureError
-                {
-                    try {
-                        return requestBody==null? null:requestBody.getBytes("utf-8");
 
-                    }catch(UnsupportedEncodingException uee)
-                    {
-                        VolleyLog.wtf("Codificacion no soportada al tratar de conectarse a %s",requestBody);
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<String, String>();
+                    headers.put("Apim-Rover-Key", URL.URL_KEY_LOG);
+                    return headers;
+                }
+
+                @Override
+                public byte[] getBody() throws AuthFailureError {
+                    try {
+                        return requestBody == null ? null : requestBody.getBytes("utf-8");
+                    } catch (UnsupportedEncodingException uee) {
+                        VolleyLog.wtf("unsupported codification");
                         return null;
                     }
                 }
-
             };
+
             requestQueue.add(stringRequest);
         }catch (Exception ex)
         {
