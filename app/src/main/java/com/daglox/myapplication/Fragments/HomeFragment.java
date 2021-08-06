@@ -11,27 +11,29 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.daglox.myapplication.POJO.EnvironmentItem;
+import com.daglox.myapplication.Presenter.HomeFragmentPresenter;
+import com.daglox.myapplication.Presenter.IHomeFragmentPresenter;
 import com.daglox.myapplication.R;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements IHomeFragment{
 
     private EditText edtNumber;
     private Button btnRefresh;
+    private IHomeFragmentPresenter iHomeFragmentPresenter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
+        iHomeFragmentPresenter = new HomeFragmentPresenter(this, getContext());
         edtNumber = v.findViewById(R.id.edtNumber);
         btnRefresh = v.findViewById(R.id.btnRefresh);
-        edtNumber.setText("Hola");
-        Toast.makeText(getContext(),"Refresh de la actividad", Toast.LENGTH_SHORT).show();
-        btnRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getFragmentManager().beginTransaction().detach(HomeFragment.this)
-                        .attach(HomeFragment.this).commit();
-            }
-        });
         return v;
     }
+
+    @Override
+    public void showEnvironmentInfo(EnvironmentItem environmentItem) {
+
+    }
+
 }
