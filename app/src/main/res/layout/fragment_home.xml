@@ -6,25 +6,473 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.HomeFragment">
 
-    <EditText
-        android:id="@+id/edtNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnRefresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Button"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="70dp"
+        android:backgroundTint="@color/lively_green_rover"
+        android:backgroundTintMode="screen"
+        android:clickable="true"
+        android:focusable="true"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_update" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="409dp"
+        android:layout_height="450dp"
+        android:layout_marginTop="130dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtNumber" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:paddingVertical="10dp">
+
+                <ImageView
+                    android:id="@+id/imgCardSystem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:src="@drawable/card_format"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgSystemCorner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/border_card_format"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardSystem"
+                    app:layout_constraintTop_toTopOf="@+id/imgCardSystem" />
+
+                <ImageView
+                    android:id="@+id/imgIconSystem"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_robot"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgSystemCorner"
+                    app:layout_constraintEnd_toEndOf="@+id/imgSystemCorner"
+                    app:layout_constraintStart_toStartOf="@+id/imgSystemCorner"
+                    app:layout_constraintTop_toTopOf="@+id/imgSystemCorner" />
+
+                <TextView
+                    android:id="@+id/tvSystem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="SYSTEM"
+                    android:textColor="@color/lively_purple_rover"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@+id/imgCardSystem"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardSystem"
+                    app:layout_constraintTop_toTopOf="@+id/imgCardSystem" />
+
+                <TextView
+                    android:id="@+id/tvTitleBattery"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Battery"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardSystem"
+                    app:layout_constraintTop_toBottomOf="@+id/imgSystemCorner" />
+
+                <TextView
+                    android:id="@+id/tvTitlePower"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Rx Power"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardSystem"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleBattery" />
+
+                <TextView
+                    android:id="@+id/tvTitleRobotTemperature"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="200dp"
+                    android:gravity="center"
+                    android:text="Temperature"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardSystem"
+                    app:layout_constraintTop_toTopOf="@+id/tvTitleBattery" />
+
+                <TextView
+                    android:id="@+id/tvTitleCurrent"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="200dp"
+                    android:gravity="center"
+                    android:text="Solar Panel Current"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTitlePower"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardSystem"
+                    app:layout_constraintTop_toTopOf="@+id/tvTitlePower" />
+
+                <TextView
+                    android:id="@+id/tvContentBattery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="63%"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTitleBattery"
+                    app:layout_constraintStart_toEndOf="@+id/tvTitleBattery"
+                    app:layout_constraintTop_toTopOf="@+id/tvTitleBattery" />
+
+                <TextView
+                    android:id="@+id/tvContentPower"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="24 dB"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTitlePower"
+                    app:layout_constraintStart_toEndOf="@+id/tvTitlePower"
+                    app:layout_constraintTop_toTopOf="@+id/tvTitlePower" />
+
+                <TextView
+                    android:id="@+id/tvContentRobotTemperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="30°C"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTitleRobotTemperature"
+                    app:layout_constraintStart_toEndOf="@+id/tvTitleRobotTemperature"
+                    app:layout_constraintTop_toTopOf="@+id/tvTitleRobotTemperature" />
+
+                <TextView
+                    android:id="@+id/tvContentCurrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="2A"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTitleCurrent"
+                    app:layout_constraintStart_toEndOf="@+id/tvTitleCurrent"
+                    app:layout_constraintTop_toTopOf="@+id/tvTitleCurrent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:paddingVertical="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/imgCardEnvironment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:src="@drawable/card_format"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imgEnvironmentCorner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/border_card_format"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardEnvironment"
+                    app:layout_constraintTop_toTopOf="@+id/imgCardEnvironment" />
+
+                <ImageView
+                    android:id="@+id/imgIconEnvironment"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_flowerbot"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgEnvironmentCorner"
+                    app:layout_constraintEnd_toEndOf="@+id/imgEnvironmentCorner"
+                    app:layout_constraintStart_toStartOf="@+id/imgEnvironmentCorner"
+                    app:layout_constraintTop_toTopOf="@+id/imgEnvironmentCorner" />
+
+                <TextView
+                    android:id="@+id/tvEnvironment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="ENVIRONMENT"
+                    android:textColor="@color/lively_purple_rover"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@+id/imgCardEnvironment"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardEnvironment"
+                    app:layout_constraintTop_toTopOf="@+id/imgCardEnvironment" />
+
+                <TextView
+                    android:id="@+id/tvTitleHumidity"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Humidity"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardEnvironment"
+                    app:layout_constraintTop_toBottomOf="@+id/imgEnvironmentCorner" />
+
+                <TextView
+                    android:id="@+id/tvTitlePh"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Soil pH"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardEnvironment"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleHumidity" />
+
+                <TextView
+                    android:id="@+id/tvTitleEnvironTemperature"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="200dp"
+                    android:gravity="center"
+                    android:text="Temperature"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardEnvironment"
+                    app:layout_constraintTop_toTopOf="@+id/tvTitleHumidity" />
+
+                <TextView
+                    android:id="@+id/tvContentHumidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="40%"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTitleHumidity"
+                    app:layout_constraintStart_toEndOf="@+id/tvTitleHumidity"
+                    app:layout_constraintTop_toTopOf="@+id/tvTitleHumidity" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="7"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTitlePh"
+                    app:layout_constraintStart_toEndOf="@+id/tvTitlePh"
+                    app:layout_constraintTop_toTopOf="@+id/tvTitlePh" />
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="24°C"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTitleEnvironTemperature"
+                    app:layout_constraintStart_toEndOf="@+id/tvTitleEnvironTemperature"
+                    app:layout_constraintTop_toTopOf="@+id/tvTitleEnvironTemperature" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:paddingVertical="10dp">
+
+                <ImageView
+                    android:id="@+id/imgCardPlagues"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:src="@drawable/card_format"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.50" />
+
+                <ImageView
+                    android:id="@+id/imgPlaguesCorner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/border_card_format"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardPlagues"
+                    app:layout_constraintTop_toTopOf="@+id/imgCardPlagues" />
+
+                <ImageView
+                    android:id="@+id/imgIconPlagues"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/ic_plagues"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgPlaguesCorner"
+                    app:layout_constraintEnd_toEndOf="@+id/imgPlaguesCorner"
+                    app:layout_constraintStart_toStartOf="@+id/imgPlaguesCorner"
+                    app:layout_constraintTop_toTopOf="@+id/imgPlaguesCorner" />
+
+                <TextView
+                    android:id="@+id/tvPlagues"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="PLAGUES"
+                    android:textColor="@color/lively_purple_rover"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@+id/imgCardPlagues"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardPlagues"
+                    app:layout_constraintTop_toTopOf="@+id/imgCardPlagues" />
+
+                <TextView
+                    android:id="@+id/tvAmountTitle"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="Amount"
+                    android:textColor="#6A6A6A"
+                    app:layout_constraintStart_toStartOf="@+id/imgCardPlagues"
+                    app:layout_constraintTop_toBottomOf="@+id/imgPlaguesCorner" />
+
+                <TextView
+                    android:id="@+id/tvTitleTypes"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="80dp"
+                    android:gravity="center"
+                    android:text="Types"
+                    android:textColor="#6A6A6A"
+                    app:layout_constraintEnd_toEndOf="@+id/imgCardPlagues"
+                    app:layout_constraintTop_toBottomOf="@+id/imgPlaguesCorner" />
+
+                <TextView
+                    android:id="@+id/tvContentAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="2"
+                    android:textColor="@color/black"
+                    android:textSize="32sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvAmountTitle"
+                    app:layout_constraintStart_toStartOf="@+id/tvAmountTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/tvAmountTitle" />
+
+                <TextView
+                    android:id="@+id/tvTitleType1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Type 1"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvTitleTypes"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/tvTitleTypes"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleTypes" />
+
+                <TextView
+                    android:id="@+id/tvTitleType2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Type 2"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tvTitleTypes"
+                    app:layout_constraintStart_toStartOf="@+id/tvTitleTypes"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTitleType1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
+        android:text="Welcome"
+        android:textColor="@color/lively_purple_rover"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Name"
+        android:textColor="@color/lively_purple_rover"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/tvWelcome"
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="Rover code or name"
+        android:textColor="@color/lively_purple_rover"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/tvUserName"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+
+    <ImageView
+        android:id="@+id/imgStatusContainer"
+        android:layout_width="60dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/pill_figure"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="online"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStatusContainer"
+        app:layout_constraintEnd_toEndOf="@+id/imgStatusContainer"
+        app:layout_constraintStart_toStartOf="@+id/imgStatusContainer"
+        app:layout_constraintTop_toTopOf="@+id/imgStatusContainer" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

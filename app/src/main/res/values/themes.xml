@@ -43,4 +43,9 @@
         <item name="editTextColor">@color/black</item>
     </style>
 
+    <style name="CardRoverFormat">
+        <item name="android:topLeftRadius">3dp</item>
+        <item name="android:bottomRightRadius">3dp</item>
+    </style>
+
 </resources>

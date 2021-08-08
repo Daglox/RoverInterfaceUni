@@ -19,6 +19,8 @@
     <color name="hard_green_rover">#4E7927</color>
     <color name="soft_gray_rover">#908E8E</color>
     <color name="soft_purple_rover">#9A86D0</color>
+    <color name="light_purple_rover">#E2D8FF</color>
+    <color name="border_purple_rover">#AD9DD9</color>
 
     <color name="green_dark">#062925</color>
     <color name="green_primary">#044a42</color>
