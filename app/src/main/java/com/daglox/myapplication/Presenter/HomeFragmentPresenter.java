@@ -12,6 +12,8 @@ import com.daglox.myapplication.RestApi.ConstantsRestApi;
 import com.daglox.myapplication.RestApi.EndPointsAPI;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,7 +22,7 @@ public class HomeFragmentPresenter implements IHomeFragmentPresenter {
 
     private IHomeFragment iHomeFragment;
     private Context context;
-    private EnvironmentItem environmentItem;
+    private ArrayList<EnvironmentItem> environmentItems;
     public HomeFragmentPresenter(IHomeFragment iHomeFragment, Context context){
         this.iHomeFragment = iHomeFragment;
         this.context = context;
@@ -37,8 +39,8 @@ public class HomeFragmentPresenter implements IHomeFragmentPresenter {
             @Override
             public void onResponse(Call<EnvironmentResponse> call, Response<EnvironmentResponse> response) {
                 EnvironmentResponse environmentResponse = response.body();
-                environmentItem = environmentResponse.getEnvironmentItem();
-                iHomeFragment.showEnvironmentInfo(environmentItem);
+                environmentItems = environmentResponse.getEnvironmentItems();
+                iHomeFragment.showEnvironmentInfo(environmentItems.get(0));
             }
 
             @Override

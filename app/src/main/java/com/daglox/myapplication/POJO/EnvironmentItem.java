@@ -3,30 +3,30 @@ package com.daglox.myapplication.POJO;
 public class EnvironmentItem {
 
 
-    private String temperature;
-    private String humidity;
+    private Float temperature;
+    private Float humidity;
 
     public EnvironmentItem(){
     }
 
-    public EnvironmentItem(String temperature, String humidity){
+    public EnvironmentItem(Float temperature, Float humidity){
         this.temperature = temperature;
         this.humidity = humidity;
     }
 
-    public String getTemperature() {
+    public Float getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(String temperature) {
+    public void setTemperature(Float temperature) {
         this.temperature = temperature;
     }
 
-    public String getHumidity() {
+    public Float getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(String humidity) {
+    public void setHumidity(Float humidity) {
         this.humidity = humidity;
     }
 }

@@ -34,8 +34,8 @@ public class HomeFragment extends Fragment implements IHomeFragment{
 
     @Override
     public void showEnvironmentInfo(EnvironmentItem environmentItem) {
-        tvTemperatureInfo.setText(environmentItem.getTemperature());
-        tvHumidityInfo.setText(environmentItem.getHumidity());
+        tvTemperatureInfo.setText(String.valueOf(environmentItem.getTemperature()));
+        tvHumidityInfo.setText(String.valueOf(environmentItem.getHumidity()));
     }
 
 }

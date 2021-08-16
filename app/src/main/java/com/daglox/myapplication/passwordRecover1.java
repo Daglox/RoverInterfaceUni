@@ -73,7 +73,7 @@ public class passwordRecover1 extends AppCompatActivity {
                             public void onResponse(String response) {
                                 try {
                                     JSONObject json_obj = new JSONObject(response);
-                                    Log.e("Result", response);
+                                    Log.i("Result", response);
                                     String registro = json_obj.getString("message");
                                     if (registro.equals("ValidEmail")) {
                                         SendMail();

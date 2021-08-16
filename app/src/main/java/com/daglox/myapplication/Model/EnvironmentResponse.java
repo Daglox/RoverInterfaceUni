@@ -2,14 +2,16 @@ package com.daglox.myapplication.Model;
 
 import com.daglox.myapplication.POJO.EnvironmentItem;
 
-public class EnvironmentResponse {
-    private EnvironmentItem environmentItem;
+import java.util.ArrayList;
 
-    public EnvironmentItem getEnvironmentItem() {
-        return environmentItem;
+public class EnvironmentResponse {
+    private ArrayList<EnvironmentItem> environmentItems;
+
+    public ArrayList<EnvironmentItem> getEnvironmentItems() {
+        return environmentItems;
     }
 
-    public void setEnvironmentItem(EnvironmentItem environmentItem) {
-        this.environmentItem = environmentItem;
+    public void setEnvironmentItems(ArrayList<EnvironmentItem> environmentItems) {
+        this.environmentItems = environmentItems;
     }
 }
