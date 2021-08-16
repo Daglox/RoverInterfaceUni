@@ -7,7 +7,7 @@
     tools:context=".Fragments.HomeFragment">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnRefresh"
+        android:id="@+id/fabRefresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
@@ -267,7 +267,7 @@
                     app:layout_constraintTop_toTopOf="@+id/tvTitleHumidity" />
 
                 <TextView
-                    android:id="@+id/tvContentHumidity"
+                    android:id="@+id/tvHumidityInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -291,7 +291,7 @@
                     app:layout_constraintTop_toTopOf="@+id/tvTitlePh" />
 
                 <TextView
-                    android:id="@+id/textView23"
+                    android:id="@+id/tvTemperatureInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"

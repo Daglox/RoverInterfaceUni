@@ -34,7 +34,7 @@ public class HomeFragmentPresenter implements IHomeFragmentPresenter {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         Gson gsonEnvironmentInfo = restApiAdapter.buildGsonDeserializeEnvironmentInfo();
         EndPointsAPI endPointsAPI = restApiAdapter.stablishConnectionRestApiAzure(gsonEnvironmentInfo);
-        Call<EnvironmentResponse> environmentResponseCall = endPointsAPI.getRecentEnvironment("Bearer" + ConstantsRestApi.ACCESS_TOKEN);
+        Call<EnvironmentResponse> environmentResponseCall = endPointsAPI.getRecentEnvironment();
         environmentResponseCall.enqueue(new Callback<EnvironmentResponse>() {
             @Override
             public void onResponse(Call<EnvironmentResponse> call, Response<EnvironmentResponse> response) {

@@ -16,10 +16,11 @@ import com.daglox.myapplication.POJO.EnvironmentItem;
 import com.daglox.myapplication.Presenter.HomeFragmentPresenter;
 import com.daglox.myapplication.Presenter.IHomeFragmentPresenter;
 import com.daglox.myapplication.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class HomeFragment extends Fragment implements IHomeFragment{
 
-    private Button btnRefresh;
+    private FloatingActionButton fabRefresh;
     private TextView tvTemperatureInfo;
     private TextView tvHumidityInfo;
     private IHomeFragmentPresenter iHomeFragmentPresenter;
@@ -28,7 +29,9 @@ public class HomeFragment extends Fragment implements IHomeFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         iHomeFragmentPresenter = new HomeFragmentPresenter(this, getContext());
-        btnRefresh = v.findViewById(R.id.btnRefresh);
+        tvTemperatureInfo = v.findViewById(R.id.tvTemperatureInfo);
+        tvHumidityInfo = v.findViewById(R.id.tvHumidityInfo);
+        fabRefresh = v.findViewById(R.id.fabRefresh);
         return v;
     }
 
