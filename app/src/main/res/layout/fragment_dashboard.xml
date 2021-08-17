@@ -110,6 +110,14 @@
                         android:layout_weight="1"
                         android:text="Environment Temperature" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Switch"
+                    tools:layout_editor_absoluteX="157dp"
+                    tools:layout_editor_absoluteY="58dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
