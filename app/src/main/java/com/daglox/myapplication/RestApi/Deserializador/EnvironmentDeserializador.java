@@ -32,10 +32,12 @@ public class EnvironmentDeserializador implements JsonDeserializer<EnvironmentRe
             JsonObject environmentResponseDataObejct = environmentResponseData.get(i).getAsJsonObject();
             Float temperature = environmentResponseDataObejct.get(JsonKeys.INFO_TEMPERATURE).getAsFloat();
             Float humidity = environmentResponseDataObejct.get(JsonKeys.INFO_HUMIDITY).getAsFloat();
+            String datetime = environmentResponseDataObejct.get(JsonKeys.DATE_STAMP).getAsString();
 
             EnvironmentItem currentEnvironmentItem = new EnvironmentItem();
             currentEnvironmentItem.setTemperature(temperature);
             currentEnvironmentItem.setHumidity(humidity);
+            currentEnvironmentItem.setDatetime(datetime);
 
             environmentItems.add(currentEnvironmentItem);
 

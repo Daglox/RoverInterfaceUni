@@ -18,11 +18,14 @@ import com.daglox.myapplication.Presenter.IHomeFragmentPresenter;
 import com.daglox.myapplication.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.w3c.dom.Text;
+
 public class HomeFragment extends Fragment implements IHomeFragment{
 
     private FloatingActionButton fabRefresh;
     private TextView tvTemperatureInfo;
     private TextView tvHumidityInfo;
+    private TextView tvDatetimeInfo;
     private IHomeFragmentPresenter iHomeFragmentPresenter;
 
     @Override
@@ -31,14 +34,16 @@ public class HomeFragment extends Fragment implements IHomeFragment{
         iHomeFragmentPresenter = new HomeFragmentPresenter(this, getContext());
         tvTemperatureInfo = v.findViewById(R.id.tvTemperatureInfo);
         tvHumidityInfo = v.findViewById(R.id.tvHumidityInfo);
+        tvDatetimeInfo = v.findViewById(R.id.tvDatetimeInfo);
         fabRefresh = v.findViewById(R.id.fabRefresh);
         return v;
     }
 
     @Override
     public void showEnvironmentInfo(EnvironmentItem environmentItem) {
-        tvTemperatureInfo.setText(String.valueOf(environmentItem.getTemperature()));
-        tvHumidityInfo.setText(String.valueOf(environmentItem.getHumidity()));
+        tvTemperatureInfo.setText(String.valueOf(environmentItem.getTemperature()) + " °C");
+        tvHumidityInfo.setText(String.valueOf(environmentItem.getHumidity()) + " %");
+        tvDatetimeInfo.setText(environmentItem.getDatetime());
     }
 
 }

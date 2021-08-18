@@ -8,7 +8,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Headers;
 
 public interface EndPointsAPI {
-    @Headers("Apim-Rover-Key: 471d2acb790f4f55bab1c87ec87768bd")
+    @Headers("Apim-Rover-Key: " + ConstantsRestApi.ACCESS_TOKEN)
     @GET(ConstantsRestApi.URL_API_INFO_ENVIRONMENT)
     Call<EnvironmentResponse> getRecentEnvironment();
 }
