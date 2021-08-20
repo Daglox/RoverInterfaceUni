@@ -10,14 +10,16 @@ import android.view.MenuItem;
 
 import com.daglox.myapplication.Fragments.DashboardFragment;
 import com.daglox.myapplication.Fragments.HomeFragment;
-import com.daglox.myapplication.Fragments.MapFragment;
+import com.daglox.myapplication.Fragments.MapsFragment;
+import com.daglox.myapplication.Fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     HomeFragment homeFragment = new HomeFragment();
     DashboardFragment dashboardFragment = new DashboardFragment();
-    MapFragment mapFragment = new MapFragment();
+    MapsFragment mapsFragment = new MapsFragment();
+    SettingsFragment settingsFragment = new SettingsFragment();
     BottomNavigationView navigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +42,11 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.dashboardFragment:
                     loadFragment(dashboardFragment);
                     return true;
-                case R.id.mapFragment:
-                    loadFragment(mapFragment);
+                case R.id.mapsFragment:
+                    loadFragment(mapsFragment);
                     return true;
+                case R.id.settingsFragment:
+                    loadFragment(settingsFragment);
             }
             return false;
         }
