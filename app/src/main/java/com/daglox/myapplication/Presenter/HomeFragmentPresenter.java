@@ -45,7 +45,7 @@ public class HomeFragmentPresenter implements IHomeFragmentPresenter {
 
             @Override
             public void onFailure(Call<EnvironmentResponse> call, Throwable t) {
-                Toast.makeText(context, "Falló la conexión con servidor", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Falló la conexión con el servidor", Toast.LENGTH_LONG).show();
                 Log.e("Connection failed", t.toString());
             }
         });
