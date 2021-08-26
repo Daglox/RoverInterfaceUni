@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment implements IHomeFragment{
     private IHomeFragment iHomeFragment;
     private Bundle bundle;
 
-    @Override
+    /*@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         iHomeFragmentPresenter = new HomeFragmentPresenter(this, getContext());
@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment implements IHomeFragment{
             }
         });
         return v;
-    }
+    }*/
 
     @Override
     public void showEnvironmentInfo(EnvironmentItem environmentItem) {
