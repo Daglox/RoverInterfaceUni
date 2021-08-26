@@ -26,7 +26,6 @@ public class HomeFragmentPresenter implements IHomeFragmentPresenter {
     public HomeFragmentPresenter(IHomeFragment iHomeFragment, Context context){
         this.iHomeFragment = iHomeFragment;
         this.context = context;
-        getEnvironmentInfo();
     }
 
     @Override
