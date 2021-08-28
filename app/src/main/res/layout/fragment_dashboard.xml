@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#833A3A"
     tools:context=".Fragments.DashboardFragment">
 
     <TextView
@@ -67,8 +68,8 @@
         app:srcCompat="@drawable/ic_update" />
 
     <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="414dp"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
         android:layout_marginTop="130dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +78,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <!--
                 <com.google.android.material.textfield.TextInputLayout
@@ -109,31 +110,80 @@
                         android:textSize="15sp" />
                 </com.google.android.material.textfield.TextInputLayout>
                 -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_weight="2">
+
                 <Spinner
                     android:id="@+id/spinnerPlot"
+                    style="@style/Widget.AppCompat.Spinner.DropDown"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="16dp"
                     android:layout_weight="2"
-                    android:background="@color/lively_purple_rover"
                     android:entries="@array/options"
                     android:spinnerMode="dropdown"
-                    ></Spinner>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"></Spinner>
+
                 <Switch
                     android:id="@+id/switch1"
+                    android:layout_width="254dp"
+                    android:layout_height="46dp"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    ></Switch>
+                    android:layout_marginTop="12dp"
+                    android:showText="true"
+                    android:textColor="@color/white"
+                    android:textOff="7 days ago"
+                    android:textOn="Today"
+                    android:thumb="@drawable/thumb"
+                    android:track="@drawable/track"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerPlot">
+
+                </Switch><![CDATA[
+
+
+
+
+
+
+
+                30dp
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerPlot" />
+
+
+
+
+
+                20dp
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/switch1" />
+
+
+
+
+
+
+
+            ]]>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/chartEnvironment"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:background="@color/light_purple_rover">
-            </com.github.mikephil.charting.charts.LineChart>
+                android:layout_height="330dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/graph_background"></com.github.mikephil.charting.charts.LineChart>
 
         </LinearLayout>
     </ScrollView>

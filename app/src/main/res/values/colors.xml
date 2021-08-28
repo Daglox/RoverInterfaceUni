@@ -29,4 +29,6 @@
     <color name="purple_primary">#FF6200EE</color>
     <color name="purple_dark">#FF3700B3</color>
     <color name="purple_light">#FFBB86FC</color>
+    <color name="purple_selected">#673BE2</color>
+
 </resources>

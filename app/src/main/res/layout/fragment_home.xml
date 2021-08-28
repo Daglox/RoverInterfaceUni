@@ -23,7 +23,7 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="450dp"
         android:layout_marginTop="130dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -136,8 +136,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="63%"
-                    android:textSize="18sp"
                     android:textColor="@color/black"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tvTitleBattery"
                     app:layout_constraintStart_toEndOf="@+id/tvTitleBattery"
                     app:layout_constraintTop_toTopOf="@+id/tvTitleBattery" />
@@ -148,8 +148,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="24 dB"
-                    android:textSize="18sp"
                     android:textColor="@color/black"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tvTitlePower"
                     app:layout_constraintStart_toEndOf="@+id/tvTitlePower"
                     app:layout_constraintTop_toTopOf="@+id/tvTitlePower" />
@@ -160,8 +160,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="30°C"
-                    android:textSize="18sp"
                     android:textColor="@color/black"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tvTitleRobotTemperature"
                     app:layout_constraintStart_toEndOf="@+id/tvTitleRobotTemperature"
                     app:layout_constraintTop_toTopOf="@+id/tvTitleRobotTemperature" />
@@ -172,8 +172,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:text="2A"
-                    android:textSize="18sp"
                     android:textColor="@color/black"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tvTitleCurrent"
                     app:layout_constraintStart_toEndOf="@+id/tvTitleCurrent"
                     app:layout_constraintTop_toTopOf="@+id/tvTitleCurrent" />
