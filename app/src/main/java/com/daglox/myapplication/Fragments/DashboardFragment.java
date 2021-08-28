@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import com.daglox.myapplication.Presenter.IHomeFragmentPresenter;
 import com.daglox.myapplication.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -101,11 +103,18 @@ public class DashboardFragment extends Fragment implements IDashboardFragment{
         for (int i=0;i<environmentItems.size();i++){
             Temperature.add(new Entry(i,environmentItems.get(i).getTemperature()));
             Humidity.add(new Entry(i,environmentItems.get(i).getHumidity()));
-            datetime.add(environmentItems.get(i).getDatetime());
+            String datet=environmentItems.get(i).getDatetime();
+            String SplitDate[]=datet.split(" ");
+            datetime.add(SplitDate[0]+"\n"+SplitDate[1]);
         }
         XAxis xAxis = chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(datetime));
+        xAxis.setGranularityEnabled(true);
+        xAxis.setGranularity(1.0f);
+        xAxis.setLabelCount(2);
+        xAxis.setAvoidFirstLastClipping(true);
+        chart.getLegend().setWordWrapEnabled(true);
         chart.animateX(1000);
         ArrayList<Entry> sec;
         if (selection.equals("Temperature")){
