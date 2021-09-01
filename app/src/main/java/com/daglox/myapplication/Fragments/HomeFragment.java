@@ -34,14 +34,15 @@ public class HomeFragment extends Fragment implements IHomeFragment{
     private EnvironmentItem environmentItem;
     private Float temperature;
     private Float humidity;
-    private Boolean temperatureSave;
-    private Boolean humiditySave;
-    private Context context;
+    private Float temperatureSave;
+    private Float humiditySave;
     private IHomeFragment iHomeFragment;
-    private Bundle bundle;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Toast.makeText(getContext(),"onStart",Toast.LENGTH_LONG).show();
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         iHomeFragmentPresenter = new HomeFragmentPresenter(this, getContext());
         tvTemperatureInfo = v.findViewById(R.id.tvTemperatureInfo);
@@ -57,35 +58,33 @@ public class HomeFragment extends Fragment implements IHomeFragment{
         return v;
     }
 
+
     @Override
     public void showEnvironmentInfo(EnvironmentItem environmentItem) {
-        temperature = (Float) environmentItem.getTemperature();
-        humidity = (Float) environmentItem.getHumidity();
+        temperature = environmentItem.getTemperature();
+        humidity = environmentItem.getHumidity();
         tvTemperatureInfo.setText(String.valueOf(temperature) + " °C");
         tvHumidityInfo.setText(String.valueOf(humidity) + " %");
         tvDatetimeInfo.setText(environmentItem.getDatetime());
-        onSaveInstanceState(bundle);
     }
 
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
         Toast.makeText(getContext(),"onSaveInstanceState",Toast.LENGTH_LONG).show();
-        outState.putFloat("key_temperature", humidity);
-        outState.putFloat("key_humidity", temperature);
-        onViewStateRestored(outState);
+        outState.putFloat("key_temperature", 10.0f);
+        outState.putFloat("key_humidity", 20.0f);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
         Toast.makeText(getContext(),"onViewStateRestored",Toast.LENGTH_LONG).show();
-
         super.onViewStateRestored(savedInstanceState);
         if(savedInstanceState != null){
-            Toast.makeText(getContext(),"get data saved",Toast.LENGTH_LONG).show();
-            temperatureSave = savedInstanceState.getBoolean("key_temperature");
-            humiditySave = savedInstanceState.getBoolean("key_humidity");
+            Toast.makeText(getContext(),"get data saved in onViewStateRestored",Toast.LENGTH_LONG).show();
+            temperatureSave = savedInstanceState.getFloat("key_temperature");
+            humiditySave = savedInstanceState.getFloat("key_humidity");
             tvTemperatureInfo.setText(String.valueOf(temperatureSave));
             tvHumidityInfo.setText(String.valueOf(humiditySave));
         }
