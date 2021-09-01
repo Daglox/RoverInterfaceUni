@@ -41,6 +41,8 @@ public class DashboardFragment extends Fragment implements IDashboardFragment{
     private FloatingActionButton fabRefresh;
     private Spinner spinnerSelection;
     private Switch switchSelection;
+    private TextView tvTitle;
+    private String TitleText;
     private LineChart chart;
     private DashboardFragmentPresenter dashboardFragmentPresenter;
 
@@ -53,6 +55,7 @@ public class DashboardFragment extends Fragment implements IDashboardFragment{
         switchSelection = v.findViewById(R.id.switch1);
         chart = v.findViewById(R.id.chartEnvironment);
         fabRefresh = v.findViewById(R.id.btnRefresh2);
+        tvTitle=v.findViewById(R.id.tvTitle);
 
         spinnerSelection.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -60,11 +63,17 @@ public class DashboardFragment extends Fragment implements IDashboardFragment{
                 String selection;
                 int check;
                 selection=spinnerSelection.getSelectedItem().toString();
+                TitleText=selection;
                 if(switchSelection.isChecked()){
-                    check=1;
+                    tvTitle.setText(TitleText+" last 7 days");
+                    check = 1;
+
                 }
-                else
-                    check=0;
+                else {
+                    tvTitle.setText(TitleText + " today");
+                    check = 0;
+                }
+
                 dashboardFragmentPresenter.selectedValue(selection,check);
             }
 
@@ -78,8 +87,10 @@ public class DashboardFragment extends Fragment implements IDashboardFragment{
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    tvTitle.setText(TitleText+" last 7 days");
                     dashboardFragmentPresenter.getWeeklyArray();
                 } else {
+                    tvTitle.setText(TitleText+" today");
                     dashboardFragmentPresenter.getCurrentArray();
                 }
             }

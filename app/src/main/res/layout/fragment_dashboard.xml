@@ -140,8 +140,8 @@
                     android:layout_marginTop="12dp"
                     android:showText="true"
                     android:textColor="@color/white"
-                    android:textOff="7 days ago"
-                    android:textOn="Today"
+                    android:textOff="Today"
+                    android:textOn="Last 7 days"
                     android:thumb="@drawable/thumb"
                     android:track="@drawable/track"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -177,13 +177,28 @@
             ]]>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/chartEnvironment"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="330dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/graph_background"/>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:text=""
+                    android:textColor="@color/purple_700"
+                    android:translationZ="1dp"/>
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/chartEnvironment"
+                    android:layout_width="match_parent"
+                    android:layout_height="330dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/graph_background"
+                    android:paddingTop="100dp"/>
+
+            </RelativeLayout>
 
         </LinearLayout>
     </ScrollView>
