@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -65,37 +67,133 @@ public class MapsFragment extends Fragment {
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
 
+            //Preguntarme si ya me he logueado anteriormente
+            //SharedPreferences pref=getContext().getSharedPreferences("data.xml",Context.MODE_PRIVATE);
+            //String user = pref.getString("data",null);
 
-            // Add a marker in Sydney and move the camera
-            LatLng p1 = new LatLng(-13.417969906176912, -76.13333447971097);
-            LatLng p2 = new LatLng(-13.417709912849299, -76.13230482495895);
-            LatLng p3 = new LatLng(-13.417778406103029, -76.13506375861964);
-            LatLng p4 = new LatLng(-13.417636999999988, -76.1352629);
-            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-            mMap.addMarker(new MarkerOptions().position(p1).title("Caffe Sport"));
-            mMap.addMarker(new MarkerOptions().position(p2).title("Plaza de Armas Chincha"));
-            mMap.addMarker(new MarkerOptions().position(p3).title("Caja Municipal Ica"));
-            mMap.addMarker(new MarkerOptions().position(p4).title("Gelateria Calderon"));
-            switch (position){
-                case 0:
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p1,19));
-                    PolylineOptions rectOption = new PolylineOptions()
-                            .add(p1)
-                            .add(p2);
-                    Polyline polyline = mMap.addPolyline(rectOption);
-                    break;
-                case 1:
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p2,19));
-                    break;
-                case 2:
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p3,19));
-                    break;
-                case 3:
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p4,19));
-                    break;
-                default:
-                    break;
+            //if (user!=null){
+            //    Log.e("data",user);
+            //}
+
+            try{
+                RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, URL.URL_MAP,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject json_obj = new JSONObject(response);
+                                    Log.e("Response",response);
+                                    String registro = json_obj.getString("geolocations");
+                                    Log.e("AVER",registro);
+                                    JSONArray jsonArray=new JSONArray(registro);
+                                    for(int i = 0; i < jsonArray.length(); i++){
+                                        JSONObject obj = jsonArray.getJSONObject(i);
+                                        String v_long= obj.getString("longitud");
+                                        String v_lat= obj.getString("latitud");
+                                        Log.e("al cine"+String.valueOf(i),v_long);
+                                        Log.e("al x"+String.valueOf(i),v_lat);
+                                        //SharedPreferences variables almacenadas en el disco duro
+
+                                        //SharedPreferences pref=getContext().getSharedPreferences("data.xml",Context.MODE_PRIVATE);
+                                        //SharedPreferences.Editor editor=pref.edit();
+
+                                        //String val_cod=v_long;
+
+                                        //editor.putString("data",val_cod);
+                                        //editor.commit(); //Graba las variables en Usuario.xml
+
+
+                                        float f_long=Float.parseFloat(v_long);
+                                        float f_lat=Float.parseFloat(v_lat);
+
+                                        // Add a marker in Sydney and move the camera
+                                        LatLng p1 = new LatLng(f_long, f_lat);
+                                        /*
+                                        LatLng p2 = new LatLng(-13.417709912849299, -76.13230482495895);
+                                        LatLng p3 = new LatLng(-13.417778406103029, -76.13506375861964);
+                                        LatLng p4 = new LatLng(-13.417636999999988, -76.1352629);
+
+                                         */
+                                        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                                        mMap.addMarker(new MarkerOptions().position(p1).title("Prueba").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+                                        /*
+                                        mMap.addMarker(new MarkerOptions().position(p2).title("Plaza de Armas Chincha"));
+                                        mMap.addMarker(new MarkerOptions().position(p3).title("Caja Municipal Ica"));
+                                        mMap.addMarker(new MarkerOptions().position(p4).title("Gelateria Calderon"));
+                                        */
+                                        switch (position){
+
+                                            case 0:
+                                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p1,19));
+                                                //PolylineOptions rectOption = new PolylineOptions()
+                                                //        .add(p1)
+                                                //        .add(p2);
+                                                //Polyline polyline = mMap.addPolyline(rectOption);
+                                                break;
+                                            /*
+                                            case 1:
+
+                                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p2,19));
+                                                break;
+                                            case 2:
+                                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p3,19));
+                                                break;
+                                            case 3:
+                                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p4,19));
+                                                break;
+
+                                             */
+                                            default:
+                                                break;
+                                        }
+
+
+                                    }
+                                    if (registro.contains("OK")) {
+                                        Toast.makeText(getContext(), "Welcome333", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else if (registro.contains("InvalidPassword")) {
+                                        Toast.makeText(getContext(), "Invalid Password", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                    else if (registro.contains("IvalidUser")) {
+                                        Toast.makeText(getContext(), "Invalid User", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.e("Conexion Error", error.getMessage());
+                                Log.e("Result", "there was an error " + error);
+                            }
+                        }) {
+                    @Override
+                    public String getPostBodyContentType() {
+                        return "application/json; charset=utf-8";
+                    }
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String> headers = new HashMap<String, String>();
+                        headers.put("Apim-Rover-Key", URL.URL_KEY_LOG);
+                        return headers;
+                    }
+
+                };
+
+                requestQueue.add(stringRequest);
+            }catch (Exception ex)
+            {
+                ex.printStackTrace();
             }
+
+
         }
     };
 
@@ -105,65 +203,7 @@ public class MapsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_maps, container, false);
 
-        try{
-            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, URL.URL_MAP,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                JSONObject json_obj = new JSONObject(response);
-                                Log.e("Response",response);
-                                String registro = json_obj.getString("geolocations");
-                                Log.e("AVER",registro);
-                                JSONArray jsonArray=new JSONArray(registro);
-                                for(int i = 0; i < jsonArray.length(); i++){
-                                    JSONObject obj = jsonArray.getJSONObject(i);
-                                    String secc= obj.getString("longitud");
-                                    Log.e("al cine"+String.valueOf(i),secc);
-                                }
-                                if (registro.contains("OK")) {
-                                    Toast.makeText(getContext(), "Welcome333", Toast.LENGTH_SHORT).show();
-                                }
-                                else if (registro.contains("InvalidPassword")) {
-                                    Toast.makeText(getContext(), "Invalid Password", Toast.LENGTH_SHORT).show();
-                                }
 
-                                else if (registro.contains("IvalidUser")) {
-                                    Toast.makeText(getContext(), "Invalid User", Toast.LENGTH_SHORT).show();
-                                }
-
-                            } catch (Exception ex) {
-                                ex.printStackTrace();
-                            }
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.e("Conexion Error", error.getMessage());
-                            Log.e("Result", "there was an error " + error);
-                        }
-                    }) {
-                @Override
-                public String getPostBodyContentType() {
-                    return "application/json; charset=utf-8";
-                }
-
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String, String> headers = new HashMap<String, String>();
-                    headers.put("Apim-Rover-Key", URL.URL_KEY_LOG);
-                    return headers;
-                }
-
-            };
-
-            requestQueue.add(stringRequest);
-        }catch (Exception ex)
-        {
-            ex.printStackTrace();
-        }
         return v;
     }
 
