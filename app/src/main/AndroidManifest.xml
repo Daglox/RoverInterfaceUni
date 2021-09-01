@@ -38,7 +38,9 @@
         <activity android:name=".passwordRecover3" />
         <activity android:name=".passwordRecover2" />
         <activity android:name=".passwordRecover1" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustPan"/>
+
         <activity android:name=".splash_screen">
             android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
             <intent-filter>

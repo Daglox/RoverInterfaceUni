@@ -1,11 +1,13 @@
 package com.daglox.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.MenuItem;
 
 import com.daglox.myapplication.Fragments.DashboardFragment;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.settingsFragment:
                     loadFragment(settingsFragment);
+                    return true;
             }
             return false;
         }
@@ -57,8 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container, fragment)
-                .commit();
+        transaction.replace(R.id.frame_container, fragment).commit();
     }
 
     @Override
@@ -71,5 +73,6 @@ public class MainActivity extends AppCompatActivity {
             navigation.setSelectedItemId(R.id.homeFragment);
         }
     }
+
 
 }
