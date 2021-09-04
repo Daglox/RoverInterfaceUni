@@ -96,7 +96,19 @@ public class DashboardFragment extends Fragment implements IDashboardFragment{
             }
         });
 
-        dashboardFragmentPresenter.getCurrentArray();
+        fabRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int c;
+                String sel=spinnerSelection.getSelectedItem().toString();
+                if(switchSelection.isChecked())
+                    c=1;
+                else
+                    c=0;
+                dashboardFragmentPresenter.selectedValue(sel,c);
+            }
+        });
+
         return v;
     }
 
