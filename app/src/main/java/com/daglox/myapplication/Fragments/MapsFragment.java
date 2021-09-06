@@ -63,6 +63,8 @@ public class MapsFragment extends Fragment {
         private GoogleMap mMap;
         private int position;
         private Context context;
+        private MapsClass arr[];
+        private int num;
         @Override
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
@@ -87,6 +89,8 @@ public class MapsFragment extends Fragment {
                                     String registro = json_obj.getString("geolocations");
                                     Log.e("AVER",registro);
                                     JSONArray jsonArray=new JSONArray(registro);
+                                    MapsClass arr[]= new MapsClass[jsonArray.length()];
+                                    num=jsonArray.length();
                                     for(int i = 0; i < jsonArray.length(); i++){
                                         JSONObject obj = jsonArray.getJSONObject(i);
                                         String v_long= obj.getString("longitud");
@@ -107,6 +111,7 @@ public class MapsFragment extends Fragment {
                                         float f_long=Float.parseFloat(v_long);
                                         float f_lat=Float.parseFloat(v_lat);
 
+
                                         // Add a marker in Sydney and move the camera
                                         LatLng p1 = new LatLng(f_long, f_lat);
                                         /*
@@ -115,41 +120,28 @@ public class MapsFragment extends Fragment {
                                         LatLng p4 = new LatLng(-13.417636999999988, -76.1352629);
 
                                          */
-                                        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                                        mMap.addMarker(new MarkerOptions().position(p1).title("Prueba").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
-                                        /*
-                                        mMap.addMarker(new MarkerOptions().position(p2).title("Plaza de Armas Chincha"));
-                                        mMap.addMarker(new MarkerOptions().position(p3).title("Caja Municipal Ica"));
-                                        mMap.addMarker(new MarkerOptions().position(p4).title("Gelateria Calderon"));
-                                        */
-                                        switch (position){
-
-                                            case 0:
-                                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p1,19));
-                                                //PolylineOptions rectOption = new PolylineOptions()
-                                                //        .add(p1)
-                                                //        .add(p2);
-                                                //Polyline polyline = mMap.addPolyline(rectOption);
-                                                break;
-                                            /*
-                                            case 1:
-
-                                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p2,19));
-                                                break;
-                                            case 2:
-                                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p3,19));
-                                                break;
-                                            case 3:
-                                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p4,19));
-                                                break;
-
-                                             */
-                                            default:
-                                                break;
-                                        }
-
+                                        arr[i]=new MapsClass(p1,f_long,f_lat);
 
                                     }
+                                    for(int i = 0; i < num; i++){
+                                        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                                        Log.e("op",String.valueOf(arr[i].getPunto()));
+                                        if (i==0 || i== num-1){
+                                            mMap.addMarker(new MarkerOptions().position(arr[i].getPunto()).title("Prueba").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+                                        }
+                                        else{
+                                            mMap.addMarker(new MarkerOptions().position(arr[i].getPunto()).title("Prueba").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker)));
+                                            PolylineOptions rectOption = new PolylineOptions()
+                                                    .add(arr[i].getPunto())
+                                                    .add(arr[i+1].getPunto());
+                                            Polyline polyline = mMap.addPolyline(rectOption);
+                                        }
+
+                                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arr[i].getPunto(),19));
+
+                                    }
+
+
                                     if (registro.contains("OK")) {
                                         Toast.makeText(getContext(), "Welcome333", Toast.LENGTH_SHORT).show();
                                     }

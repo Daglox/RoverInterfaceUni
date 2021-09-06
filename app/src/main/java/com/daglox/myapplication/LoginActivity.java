@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, "Invalid Password", Toast.LENGTH_SHORT).show();
                                 }
 
-                                else if (registro.contains("IvalidUser")) {
+                                else if (registro.contains("InvalidUser")) {
                                     Toast.makeText(LoginActivity.this, "Invalid User", Toast.LENGTH_SHORT).show();
                                 }
 
