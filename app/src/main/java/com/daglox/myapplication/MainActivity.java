@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     MapsFragment mapsFragment = new MapsFragment();
     SettingsFragment settingsFragment = new SettingsFragment();
     BottomNavigationView navigation;
+    final FragmentManager fm = getSupportFragmentManager();
+    Fragment active = homeFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
         navigation = findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        loadFragment(homeFragment);
-
+        //loadFragment(homeFragment);
+        fm.beginTransaction().add(R.id.frame_container,settingsFragment, "4").hide(settingsFragment).commit();
+        fm.beginTransaction().add(R.id.frame_container, mapsFragment, "3").hide(mapsFragment).commit();
+        fm.beginTransaction().add(R.id.frame_container,dashboardFragment, "2").hide(dashboardFragment).commit();
+        fm.beginTransaction().add(R.id.frame_container,homeFragment, "1").commit();
         
     }
 
@@ -41,22 +47,29 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.homeFragment:
-                    loadFragment(homeFragment);
+                    //loadFragment(homeFragment);
+                    fm.beginTransaction().hide(active).show(homeFragment).commit();
+                    active = homeFragment;
                     return true;
                 case R.id.dashboardFragment:
-                    loadFragment(dashboardFragment);
+                    //loadFragment(dashboardFragment);
+                    fm.beginTransaction().hide(active).show(dashboardFragment).commit();
+                    active = dashboardFragment;
                     return true;
                 case R.id.mapsFragment:
-                    loadFragment(mapsFragment);
+                    //loadFragment(mapsFragment);
+                    fm.beginTransaction().hide(active).show(mapsFragment).commit();
+                    active = mapsFragment;
                     return true;
                 case R.id.settingsFragment:
-                    loadFragment(settingsFragment);
+                    //loadFragment(settingsFragment);
+                    fm.beginTransaction().hide(active).show(settingsFragment).commit();
+                    active = settingsFragment;
                     return true;
             }
             return false;
         }
     };
-
 
     public void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
