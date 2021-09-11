@@ -7,9 +7,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.daglox.myapplication.Fragments.DashboardFragment;
 import com.daglox.myapplication.Fragments.HomeFragment;
@@ -87,5 +91,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    public void quit(View view){
+        Toast.makeText(MainActivity.this, "HOLA", Toast.LENGTH_SHORT).show();
+        SharedPreferences pref2 = getSharedPreferences("Usuario.xml",MODE_PRIVATE);
+        SharedPreferences.Editor editor2=pref2.edit();
+        editor2.putString("USUARIO",null);
+        editor2.commit();
+        Intent intent2 = new Intent(this, LoginActivity.class);
+        startActivity(intent2);
+    }
 }

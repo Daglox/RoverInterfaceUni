@@ -128,6 +128,7 @@ public class MapsFragment extends Fragment {
                                         Log.e("op",String.valueOf(arr[i].getPunto()));
                                         if (i==0 || i== num-1){
                                             mMap.addMarker(new MarkerOptions().position(arr[i].getPunto()).title("Prueba").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
+
                                         }
                                         else{
                                             mMap.addMarker(new MarkerOptions().position(arr[i].getPunto()).title("Prueba").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker)));
@@ -137,7 +138,7 @@ public class MapsFragment extends Fragment {
                                             Polyline polyline = mMap.addPolyline(rectOption);
                                         }
 
-                                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arr[i].getPunto(),19));
+
 
                                     }
 
