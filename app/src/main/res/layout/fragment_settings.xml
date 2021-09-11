@@ -35,9 +35,14 @@
         android:id="@+id/spinnerLanguages"
         android:layout_width="165dp"
         android:layout_height="30dp"
-        android:layout_marginStart="65dp"
+        android:layout_marginStart="76dp"
         android:background="@drawable/language_format"
+        android:entries="@array/combo_languages"
+        android:spinnerMode="dropdown"
+        android:paddingHorizontal="8dp"
+
         app:layout_constraintBottom_toBottomOf="@+id/tvLanguage"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvLanguage"
         app:layout_constraintTop_toTopOf="@+id/tvLanguage" />
 
@@ -50,7 +55,6 @@
         android:src="@drawable/ic_exit"
         app:layout_constraintBottom_toBottomOf="@+id/tvSettings"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvSettings"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/tvSettings" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
