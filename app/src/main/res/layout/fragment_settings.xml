@@ -7,12 +7,50 @@
     tools:context=".Fragments.SettingsFragment">
 
     <TextView
+        android:id="@+id/tvSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SETTINGS FRAGMENT"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="45dp"
+        android:text="Settings"
+        android:textColor="@color/lively_purple_rover"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:text="Language"
+        android:textColor="@color/dark_gray_rover"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvSettings"
+        app:layout_constraintTop_toBottomOf="@+id/tvSettings" />
+
+    <Spinner
+        android:id="@+id/spinnerLanguages"
+        android:layout_width="165dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="65dp"
+        android:background="@drawable/language_format"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLanguage"
+        app:layout_constraintStart_toEndOf="@+id/tvLanguage"
+        app:layout_constraintTop_toTopOf="@+id/tvLanguage" />
+
+    <ImageButton
+        android:id="@+id/btnLogout"
+        android:layout_width="52dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_exit"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSettings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvSettings"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
