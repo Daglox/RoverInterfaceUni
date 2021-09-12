@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         /*La unica orientacion valida es portrait (vista vertical, parado)*/
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        /*
+
         //Preguntarme si ya me he logueado anteriormente
         SharedPreferences pref=getSharedPreferences("Usuario.xml",MODE_PRIVATE);
         String user = pref.getString("USUARIO",null);
@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
-         */
+
     }
 
 
@@ -94,6 +94,19 @@ public class LoginActivity extends AppCompatActivity {
                                 Log.e("AVER",registro);
                                 if (registro.contains("ValidUser")) {
                                     Toast.makeText(LoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+
+                                    Toast.makeText(LoginActivity.this, "Welcome", Toast.LENGTH_SHORT).show();
+
+                                    SharedPreferences pref=getSharedPreferences("Usuario.xml",MODE_PRIVATE);
+                                    SharedPreferences.Editor editor=pref.edit();
+
+                                    String val_cod=edtUser.getText().toString();
+
+                                    editor.putString("USUARIO",val_cod);
+                                    editor.commit(); //Graba las variables en Usuario.xml
+
+
+
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();

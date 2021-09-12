@@ -55,6 +55,7 @@
         android:src="@drawable/ic_exit"
         app:layout_constraintBottom_toBottomOf="@+id/tvSettings"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvSettings" />
+        app:layout_constraintTop_toTopOf="@+id/tvSettings"
+        android:onClick="quit"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
