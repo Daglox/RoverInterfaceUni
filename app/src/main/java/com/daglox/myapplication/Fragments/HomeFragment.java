@@ -41,11 +41,6 @@ public class HomeFragment extends Fragment implements IHomeFragment{
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         iHomeFragmentPresenter = new HomeFragmentPresenter(this, getContext());
@@ -62,21 +57,7 @@ public class HomeFragment extends Fragment implements IHomeFragment{
         return v;
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-
-    @Override
-    public void onViewStateRestored(Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
-
+    /*
     @Override
     public void onResume() {
         super.onResume();
@@ -87,8 +68,9 @@ public class HomeFragment extends Fragment implements IHomeFragment{
         tvTemperatureInfo.setText(String.valueOf(temperature) + " °C");
         tvHumidityInfo.setText(String.valueOf(humidity) + " %");
         tvDatetimeInfo.setText(time);
-    }
+    }*/
 
+    /*
     @Override
     public void onPause() {
         super.onPause();
@@ -98,27 +80,8 @@ public class HomeFragment extends Fragment implements IHomeFragment{
         editor.putFloat("humidity",humidity);
         editor.putString("time",time);
         editor.apply();
-    }
+    }*/
 
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
 
     @Override
     public void showEnvironmentInfo(EnvironmentItem environmentItem) {
@@ -127,6 +90,6 @@ public class HomeFragment extends Fragment implements IHomeFragment{
         time = environmentItem.getDatetime();
         tvTemperatureInfo.setText(String.valueOf(temperature) + " °C");
         tvHumidityInfo.setText(String.valueOf(humidity) + " %");
-        tvDatetimeInfo.setText(environmentItem.getDatetime());
+        tvDatetimeInfo.setText(time);
     }
 }
