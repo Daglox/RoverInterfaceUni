@@ -57,31 +57,6 @@ public class HomeFragment extends Fragment implements IHomeFragment{
         return v;
     }
 
-    /*
-    @Override
-    public void onResume() {
-        super.onResume();
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getContext());
-        temperature = datos.getFloat("temperature",0.0f);
-        humidity = datos.getFloat("humidity",0.0f);
-        time = datos.getString("time"," ");
-        tvTemperatureInfo.setText(String.valueOf(temperature) + " °C");
-        tvHumidityInfo.setText(String.valueOf(humidity) + " %");
-        tvDatetimeInfo.setText(time);
-    }*/
-
-    /*
-    @Override
-    public void onPause() {
-        super.onPause();
-        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getContext());
-        SharedPreferences.Editor editor = datos.edit();
-        editor.putFloat("temperature",temperature);
-        editor.putFloat("humidity",humidity);
-        editor.putString("time",time);
-        editor.apply();
-    }*/
-
 
     @Override
     public void showEnvironmentInfo(EnvironmentItem environmentItem) {

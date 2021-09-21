@@ -102,7 +102,7 @@ public class passwordRecover3 extends AppCompatActivity {
                         @Override
                         public Map<String, String> getHeaders() throws AuthFailureError {
                             Map<String, String> headers = new HashMap<String, String>();
-                            headers.put("Apim-Rover-Key", URL.URL_KEY);
+                            headers.put("Ocp-Apim-Rover", URL.URL_KEY);
                             return headers;
                         }
 

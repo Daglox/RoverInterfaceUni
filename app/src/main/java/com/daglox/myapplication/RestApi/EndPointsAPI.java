@@ -8,15 +8,15 @@ import retrofit2.http.Header;
 import retrofit2.http.Headers;
 
 public interface EndPointsAPI {
-    @Headers("Apim-Rover-Key: " + ConstantsRestApi.ACCESS_TOKEN)
+    @Headers("Ocp-Apim-Rover: " + ConstantsRestApi.ACCESS_TOKEN)
     @GET(ConstantsRestApi.URL_API_INFO_ENVIRONMENT)
     Call<EnvironmentResponse> getRecentEnvironment();
 
-    @Headers("Apim-Rover-Key: " + ConstantsRestApi.ACCESS_TOKEN)
+    @Headers("Ocp-Apim-Rover: " + ConstantsRestApi.ACCESS_TOKEN)
     @GET(ConstantsRestApi.URL_API_PLOT_WEEKLY_ENVIRONMENT)
     Call<EnvironmentResponse> plotWeeklyEnvironment();
 
-    @Headers("Apim-Rover-Key: " + ConstantsRestApi.ACCESS_TOKEN)
+    @Headers("Ocp-Apim-Rover: " + ConstantsRestApi.ACCESS_TOKEN)
     @GET(ConstantsRestApi.URL_API_PLOT_CURRENT_ENVIRONMENT)
     Call<EnvironmentResponse> plotCurrentEnvironment();
 
