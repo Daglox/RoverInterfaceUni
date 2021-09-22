@@ -38,6 +38,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
@@ -48,7 +49,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MapsFragment extends Fragment {
-
+    private FloatingActionButton fabRefresh;
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
         /**
@@ -65,6 +66,7 @@ public class MapsFragment extends Fragment {
         private Context context;
         private MapsClass arr[];
         private int num;
+
         @Override
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
@@ -195,8 +197,15 @@ public class MapsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_maps, container, false);
+        fabRefresh = v.findViewById(R.id.fabRefreshMap);
+        fabRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Actualizado", Toast.LENGTH_SHORT).show();
+                getParentFragmentManager().beginTransaction().detach(MapsFragment.this).attach(MapsFragment.this).commit();
 
-
+            }
+        });
         return v;
     }
 
